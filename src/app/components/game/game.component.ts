@@ -27,23 +27,19 @@ export class GameComponent implements OnInit {
       this.playerSymbol = symbol
     })
 
-    this.socketService.listen('startGame').subscribe((data: any) => {
+    this.socketService.listen('gameUpdate').subscribe((data: any) => {
       this.board = data.board
       this.currentPlayer = data.currentPlayer.symbol
-      this.gameOver = false
-      this.message = 'Game Started'
-    })
-
-    this.socketService.listen('move').subscribe((data: any) => {
-      this.board = data.board
-      this.currentPlayer = data.currentPlayer
       this.gameOver = data.gameOver
       this.message = data.message
     })
   }
 
   makeMove (row: number, column: number): void {
-    if (this.isMoveValid(row, column)) {
+    console.log(`row ${row} column ${column}`)
+    const moveValid = this.isMoveValid(row, column)
+    console.log('This move is valid: ', moveValid)
+    if (moveValid) {
       this.socketService.emit('move', { row, column })
     }
   }

@@ -3,17 +3,17 @@ import { BrowserModule } from '@angular/platform-browser'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { SocketService } from './services/socket.services'
+import { GameComponent } from './components/game/game.component'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
+    AppRoutingModule
   ],
   providers: [SocketService],
   bootstrap: [AppComponent]

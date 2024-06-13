@@ -1,4 +1,5 @@
-<div *ngIf="message" class="message">{{ message }}</div>
+<div *ngIf="playerSymbol"><h3>You are {{ playerSymbol }}</h3></div>
+ Estado juego: <div *ngIf="message" class="message">{{ message }}</div>
 <div class="board">
   <div class="row" *ngFor="let row of board; let rowIndex = index">
     <div class="cell" *ngFor="let cell of row; let colIndex = index" (click)="makeMove(rowIndex, colIndex)">
